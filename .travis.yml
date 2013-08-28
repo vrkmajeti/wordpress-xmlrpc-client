@@ -1,4 +1,4 @@
-language: objective-c
+language: c
 
 before_install:
   - sudo apt-get update -qq > /dev/null
@@ -9,5 +9,5 @@ before_install:
 
 script:
   - cd src/
-  - xbuild CI\ Demo.sln
-  - mono ../lib/xunit/xunit.console.clr4.x86.exe CI.Demo.Tests/bin/Debug/CI.Demo.Tests.dll
+  - xbuild Wordpress\ XMLRPC.sln
+  - mono ../lib/xunit/xunit.console.clr4.x86.exe Wordpress.Xml.Rpc.Tests/bin/Debug/Wordpress.Xml.Rpc.Tests.dll
