@@ -4,10 +4,10 @@ before_install:
   - sudo apt-get update -qq > /dev/null
   - sudo apt-get install -qq mono-devel mono-gmcs > /dev/null
   - mozroots --import --sync
-  - chmod +x lib/xunit.console.clr4.x86.exe
+  - chmod +x lib/xunit.console.clr4.exe
   - export EnableNuGetPackageRestore=true
 
 script:
   - cd src/
   - xbuild Wordpress\ XMLRPC.sln
-  - mono ../lib/xunit.console.clr4.x86.exe Wordpress.Xml.Rpc.Tests/bin/Debug/Wordpress.Xml.Rpc.Tests.dll
+  - mono ../lib/xunit.console.clr4.exe Wordpress.Xml.Rpc.Tests/bin/Debug/Wordpress.Xml.Rpc.Tests.dll
