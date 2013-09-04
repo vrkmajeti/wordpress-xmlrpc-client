@@ -1,8 +1,8 @@
 # Wordpress XML-RPC Client for .NET
 
-[![Build Status](https://travis-ci.org/ShawONEX/wordpress-xmlrpc-client.png)](https://travis-ci.org/ShawONEX/wordpress-xmlrpc-client)
-
 A wrapper library around the wordpress XML-RPC api. This is a work in progress and any help would be greatly appreciated!
+
+See the `why-travisci-isnt-working.htm` file for info on why we haven't setup CI for this project yet.
 
 ## Contributing
 
