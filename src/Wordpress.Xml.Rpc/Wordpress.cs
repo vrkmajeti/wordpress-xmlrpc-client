@@ -46,14 +46,17 @@ namespace Wordpress.Xml.Rpc
 
         private void SetupAutoMapper()
         {
-            Mapper.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
-            Mapper.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
-            Mapper.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
-            Mapper.CreateMap<PostFilter, PostFilterProxy>()
-                .ForMember(
-                    dest => dest.PostStatus,
-                    opt => opt.MapFrom(source => new string[] { Mapper.Map<string>(source.PostStatus) })
-                );
+            Mapper.Initialize((config) =>
+            {
+                config.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<PostFilter, PostFilterProxy>()
+                    .ForMember(
+                        dest => dest.PostStatus,
+                        opt => opt.MapFrom(source => new string[] { Mapper.Map<string>(source.PostStatus) })
+                    );
+            });            
         }
 
         private void CreateRPCProxy(Uri rpcEndpoint)
