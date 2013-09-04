@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <description>$description$</description>
+    <language>en-US</language>
+    <projectUrl>https://github.com/ShawONEX/wordpress-xmlrpc-client</projectUrl>
+    <licenseUrl>https://github.com/ShawONEX/wordpress-xmlrpc-client/blob/master/LICENSE</licenseUrl>    
+    <tags>XMLRPC WORDPRESS</tags>
+    <releaseNotes><![CDATA[
+            For full release notes see https://github.com/ShawONEX/wordpress-xmlrpc-client/blob/master/README.md
+            ]]></releaseNotes>
+  </metadata>
+</package>
