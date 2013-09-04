@@ -21,16 +21,19 @@ namespace Wordpress.Xml.Rpc.Tests.Posts
 
             public XmlRpcSerializer()
             {
-                Mapper.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
-                Mapper.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
-                Mapper.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
-                Mapper.CreateMap<Rpc.PostFilter, PostFilterProxy>()
-                    .ForMember(
-                        dest => dest.PostStatus,
-                        opt => opt.MapFrom(
-                            source => new string[] { Mapper.Map<string>(source.PostStatus) }
-                        )
-                    );
+                Mapper.Initialize((config) =>
+                {
+                    config.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
+                    config.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
+                    config.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
+                    config.CreateMap<Rpc.PostFilter, PostFilterProxy>()
+                        .ForMember(
+                            dest => dest.PostStatus,
+                            opt => opt.MapFrom(
+                                source => new string[] { Mapper.Map<string>(source.PostStatus) }
+                            )
+                        );
+                });               
 
                 var doc = new XmlDocument();
                 doc.Load("SampleData/getpost.xml");
