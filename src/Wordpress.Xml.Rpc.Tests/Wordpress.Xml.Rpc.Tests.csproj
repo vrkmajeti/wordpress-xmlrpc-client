@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Posts\Post.cs" />
     <Compile Include="Posts\PostFilter.cs" />
     <Compile Include="Wordpress.cs" />
