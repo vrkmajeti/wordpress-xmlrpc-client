@@ -65,7 +65,7 @@ namespace Wordpress.Xml.Rpc
             this._proxy.Url = rpcEndpoint.ToString();
         }
 
-        public Post GetPost(int postId)
+        public virtual Post GetPost(int postId)
         {
             return this._proxy.GetPost(
                     this._blogId,
@@ -75,7 +75,7 @@ namespace Wordpress.Xml.Rpc
                 );
         }
 
-        public IEnumerable<Post> GetPosts(PostFilter filter)
+        public virtual IEnumerable<Post> GetPosts(PostFilter filter)
         {
             var paramFilter = Mapper.Map<PostFilterProxy>(filter);
             
