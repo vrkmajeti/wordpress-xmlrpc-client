@@ -16,6 +16,21 @@ namespace Wordpress.Xml.Rpc
         private NetworkCredential _creds;
         private IWordpressProxy _proxy;
 
+        static Wordpress()
+        {
+            Mapper.Initialize((config) =>
+            {
+                config.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
+                config.CreateMap<PostFilter, PostFilterProxy>()
+                    .ForMember(
+                        dest => dest.PostStatus,
+                        opt => opt.MapFrom(source => new string[] { Mapper.Map<string>(source.PostStatus) })
+                    );
+            });         
+        }
+
         public Wordpress()
         {
             this._blogId = int.Parse(ConfigurationManager.AppSettings["WP_XML_RPC_BLOG_ID"]);            
@@ -26,7 +41,6 @@ namespace Wordpress.Xml.Rpc
 
             var url = ConfigurationManager.AppSettings["WP_XML_RPC_URL"];
             this.CreateRPCProxy(new Uri(url));
-            this.SetupAutoMapper();
         }
 
         public Wordpress(Uri rpcEndpoint, int blogId, string username, string password)
@@ -41,22 +55,6 @@ namespace Wordpress.Xml.Rpc
             this._creds = new NetworkCredential(username, password);
 
             this.CreateRPCProxy(rpcEndpoint);
-            this.SetupAutoMapper();
-        }
-
-        private void SetupAutoMapper()
-        {
-            Mapper.Initialize((config) =>
-            {
-                config.CreateMap<PostStatus, string>().ConvertUsing(src => src.ToRPC());
-                config.CreateMap<PostOrderBy, string>().ConvertUsing(src => src.ToRPC());
-                config.CreateMap<Order, string>().ConvertUsing(src => src.ToRPC());
-                config.CreateMap<PostFilter, PostFilterProxy>()
-                    .ForMember(
-                        dest => dest.PostStatus,
-                        opt => opt.MapFrom(source => new string[] { Mapper.Map<string>(source.PostStatus) })
-                    );
-            });            
         }
 
         private void CreateRPCProxy(Uri rpcEndpoint)

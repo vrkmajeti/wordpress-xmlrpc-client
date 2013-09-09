@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 
 class GlobalAssemblyInfo
 {
-    public const string Version = "0.1.1";
+    public const string Version = "0.1.2";
 }
