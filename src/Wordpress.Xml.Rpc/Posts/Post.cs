@@ -78,5 +78,11 @@ namespace Wordpress.Xml.Rpc
 
         [XmlRpcMember("post_thumbnail")]
         public object Thumbnail;
+
+        [XmlRpcMember("terms")]
+        public Term[] Terms { get; set; }
+
+        [XmlRpcMember("custom_fields")]
+        public CustomField[] CustomFields { get; set; }
     }
 }

@@ -174,6 +174,18 @@ namespace Wordpress.Xml.Rpc.Tests.Posts
                 this._subject.Sticky.Should().Equal(this._expected.Sticky);
             }
 
+            [Fact]
+            public void MapsTerms()
+            {
+                this._subject.Terms.Should().Equal(this._expected.Terms);
+            }
+
+            [Fact]
+            public void MapsCustomFields()
+            {
+                this._subject.CustomFields.Should().Equal(this._expected.CustomFields);
+            }
+
             private Rpc.Post ExpectedPost()
             {
                 // values taken from SampleData/getpost.xml
@@ -199,7 +211,16 @@ namespace Wordpress.Xml.Rpc.Tests.Posts
                 post.CommentStatus = "open";
                 post.PingStatus = "open";
                 post.Sticky = false;
+                post.Terms = new Term[]{
+                    new Term{ Id = "10", Name = "Weddings", Slug="weddings", Group="0", TaxonomyId="10", Taxonomy="category", Description="Weddings", Parent="0", Count=69 }
+                };
 
+                post.CustomFields = new CustomField[]{
+                    new CustomField{ Id = "54400", Key = "aa", Value="2010" },
+                    new CustomField{ Id = "54380", Key = "action", Value="editpost" },
+                    new CustomField{ Id = "54434", Key = "advanced_view", Value="1" },
+                    new CustomField{ Id = "54388", Key = "autosavenonce", Value="37b9c93717" }
+                };
                 return post;
             }
         }
