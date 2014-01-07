@@ -84,5 +84,14 @@ namespace Wordpress.Xml.Rpc
                     paramFilter
                 );
         }
+
+        public virtual IEnumerable<Author> GetAuthors()
+        {
+            return this._proxy.GetAuthors(
+                    this._blogId,
+                    this._creds.UserName,
+                    this._creds.Password
+                );
+        }
     }
 }

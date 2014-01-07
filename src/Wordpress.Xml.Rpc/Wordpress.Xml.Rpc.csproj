@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Guard.cs" />
+    <Compile Include="Posts\Author.cs" />
     <Compile Include="Posts\CustomField.cs" />
     <Compile Include="Posts\Post.cs" />
     <Compile Include="Posts\Term.cs" />

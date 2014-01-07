@@ -65,6 +65,8 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="LambdaComparer.cs" />
+    <Compile Include="Posts\Authors.cs" />
     <Compile Include="Posts\Post.cs" />
     <Compile Include="Posts\PostFilter.cs" />
     <Compile Include="Wordpress.cs" />
@@ -81,6 +83,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SampleData\getAuthors.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SampleData\getpost.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
