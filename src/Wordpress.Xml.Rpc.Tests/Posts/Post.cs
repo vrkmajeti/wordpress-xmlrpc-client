@@ -186,6 +186,19 @@ namespace Wordpress.Xml.Rpc.Tests.Posts
                 this._subject.CustomFields.Should().Equal(this._expected.CustomFields);
             }
 
+            [Fact]
+            public void MapsPostThumbnail()
+            {
+                this._subject.Thumbnail.AttachmentId.Should().Equal(this._expected.Thumbnail.AttachmentId);
+                this._subject.Thumbnail.DateCreatedGMT.Should().Equal(this._expected.Thumbnail.DateCreatedGMT);
+                this._subject.Thumbnail.Parent.Should().Equal(this._expected.Thumbnail.Parent);
+                this._subject.Thumbnail.Link.Should().Equal(this._expected.Thumbnail.Link);
+                this._subject.Thumbnail.Title.Should().Equal(this._expected.Thumbnail.Title);
+                this._subject.Thumbnail.Caption.Should().Equal(this._expected.Thumbnail.Caption);
+                this._subject.Thumbnail.Description.Should().Equal(this._expected.Thumbnail.Description);
+                this._subject.Thumbnail.ThumbnailLink.Should().Equal(this._expected.Thumbnail.ThumbnailLink);
+            }
+
             private Rpc.Post ExpectedPost()
             {
                 // values taken from SampleData/getpost.xml
@@ -221,6 +234,19 @@ namespace Wordpress.Xml.Rpc.Tests.Posts
                     new CustomField{ Id = "54434", Key = "advanced_view", Value="1" },
                     new CustomField{ Id = "54388", Key = "autosavenonce", Value="37b9c93717" }
                 };
+
+                post.Thumbnail = new MediaItem
+                {
+                    AttachmentId = "23194",
+                    DateCreatedGMT =  new DateTime(2012,4,9,22,48,37),
+                    Parent = 0,
+                    Link = "http://media.slice.ca/files/2012/04/21991.jpg",
+                    Title = "21991",
+                    Caption = "",
+                    Description = "",
+                    ThumbnailLink = "http://media.slice.ca/files/2012/04/21991-150x150.jpg"
+                };
+
                 return post;
             }
         }

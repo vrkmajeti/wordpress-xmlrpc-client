@@ -77,7 +77,7 @@ namespace Wordpress.Xml.Rpc
         public bool Sticky;
 
         [XmlRpcMember("post_thumbnail")]
-        public object Thumbnail;
+        public MediaItem Thumbnail;
 
         [XmlRpcMember("terms")]
         public Term[] Terms { get; set; }

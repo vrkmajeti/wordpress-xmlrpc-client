@@ -72,7 +72,7 @@ namespace Wordpress.Xml.Rpc
                     postId
                 );
         }
-
+        
         public virtual IEnumerable<Post> GetPosts(PostFilter filter)
         {
             var paramFilter = Mapper.Map<PostFilterProxy>(filter);
